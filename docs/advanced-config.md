@@ -24,7 +24,8 @@ The following options are available:
     "authPassword": "",
     "webRoot": "{directory of beefweb binary}/beefweb.root",
     "urlMappings": {},
-    "responseHeaders": {}
+    "responseHeaders": {},
+    "readOnlyMode: false
 }
 ```
 
@@ -76,3 +77,7 @@ The following configuration file allows to make requests from any origin:
 ```
 
 Please read [documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) to find out how to set up CORS headers properly.
+
+### Other settings
+
+`readOnlyMode: bool` - disable destructive operations

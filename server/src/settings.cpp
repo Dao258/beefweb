@@ -49,7 +49,8 @@ SettingsData::SettingsData()
     : port(MSRV_DEFAULT_PORT),
       allowRemote(true),
       webRoot(getDefaultWebRoot()),
-      authRequired(false)
+      authRequired(false),
+      readOnlyMode(false)
 {
 }
 
@@ -153,6 +154,10 @@ void SettingsData::load(const Json& json)
     it = json.find("urlMappings");
     if (it != json.end())
         urlMappings = it->get<std::unordered_map<std::string, std::string>>();
+
+    it = json.find("readOnlyMode");
+    if (it != json.end())
+        readOnlyMode = it->get<bool>();
 }
 
 }

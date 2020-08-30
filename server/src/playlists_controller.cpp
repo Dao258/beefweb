@@ -238,6 +238,11 @@ void PlaylistsController::defineRoutes(Router* router, WorkQueue* workQueue, Pla
     routes.setPrefix("api/playlists");
 
     routes.get("", &PlaylistsController::getPlaylists);
+    routes.get(":plref/items/:range", &PlaylistsController::getPlaylistItems);
+
+    if (settings->readOnlyMode)
+        return;
+
     routes.post("", &PlaylistsController::updatePlaylists);
 
     routes.post("add", &PlaylistsController::addPlaylist);
@@ -258,8 +263,6 @@ void PlaylistsController::defineRoutes(Router* router, WorkQueue* workQueue, Pla
 
     routes.post(":plref/:targetPlref/items/move", &PlaylistsController::moveItemsBetweenPlaylists);
     routes.post(":plref/:targetPlref/items/copy", &PlaylistsController::copyItemsBetweenPlaylists);
-
-    routes.get(":plref/items/:range", &PlaylistsController::getPlaylistItems);
 }
 
 }
