@@ -29,4 +29,4 @@ jobs:
     - name: Upload binaries
       uses: actions/upload-artifact@v2
       with:
-        path: build/$BUILD_TYPE/*.tar.gz
+        path: build/${{ env.BUILD_TYPE }}/*.tar.gz
