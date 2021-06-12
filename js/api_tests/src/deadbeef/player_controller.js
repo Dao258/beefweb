@@ -147,7 +147,7 @@ class PlayerController
             process.env,
             {
                 HOME: this.paths.profileDir,
-                XDG_CONFIG_DIR: path.join(this.paths.profileDir, '.config')
+                XDG_CONFIG_HOME: path.join(this.paths.profileDir, '.config')
             },
             environment);
 
