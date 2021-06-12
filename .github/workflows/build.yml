@@ -15,11 +15,7 @@ jobs:
 
     steps:
     - name: Print versions
-      run: |
-        g++ --version
-        cmake --version
-        node --version
-        yarn --version
+      run: ci/github/print-versions
 
     - name: Checkout
       uses: actions/checkout@v2
