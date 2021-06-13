@@ -58,7 +58,7 @@ jobs:
         echo %cd%\tools\patch >> %GITHUB_PATH%
 
     - name: Build
-      run: ci\github\install.cmd
+      run: ci\github\build.cmd
 
     - name: Test
       run: ci\github\test.cmd
