@@ -21,13 +21,13 @@ jobs:
       run: scripts/print-versions.sh
 
     - name: Install tools
-      run: ci/github/install
+      run: ci/github/install.sh
 
     - name: Build
-      run: ci/github/build
+      run: ci/github/build.sh
 
     - name: Test
-      run: ci/github/test
+      run: ci/github/test.sh
 
     - name: Upload binaries
       uses: actions/upload-artifact@v2
