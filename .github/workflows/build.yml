@@ -7,6 +7,7 @@ on:
     branches: [ $default-branch ]
 
 jobs:
+
   build_linux:
     runs-on: ubuntu-18.04
 
@@ -33,4 +34,40 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: beefweb_linux
+        if-no-files-found: error
         path: build/${{ env.BUILD_TYPE }}/*.tar.gz
+
+  build_windows:
+    runs-on: windows-2016
+
+    defaults:
+      run:
+        shell: cmd
+
+    env:
+      BUILD_TYPE: RelWithDebInfo
+      BUILD_TYPE_L: relwithdebinfo
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install tools
+      run: |
+        ci\github\install.cmd
+        echo %cd%\tools\patch >> %GITHUB_PATH%
+
+    - name: Build
+      run: ci\github\install.cmd
+
+    - name: Test
+      run: ci\github\test.cmd
+
+    - name: Upload binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: beefweb_windows
+        if-no-files-found: error
+        path: |
+          build\${{ env.BUILD_TYPE_L }}\*.fb2k-component
+          build\${{ env.BUILD_TYPE_L }}\*.zip
