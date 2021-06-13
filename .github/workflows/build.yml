@@ -52,6 +52,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Setup MSVC
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x86
+
     - name: Install tools
       run: |
         ci\github\install.cmd
