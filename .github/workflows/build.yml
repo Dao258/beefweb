@@ -55,7 +55,7 @@ jobs:
     - name: Setup MSVC
       uses: ilammy/msvc-dev-cmd@v1
       with:
-        arch: x86
+        arch: Win32
 
     - name: Install tools
       run: |
