@@ -63,7 +63,7 @@ jobs:
     - name: Install tools
       run: |
         cmd /c ci\github\install.cmd
-        %cd%\tools\patch >> %GITHUB_PATH%
+        cmd /c "echo %cd%\tools\patch >> %GITHUB_PATH%"
 
     #- name: Build
     #  run: cmd /c ci\github\build.cmd
