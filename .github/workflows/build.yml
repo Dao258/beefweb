@@ -9,7 +9,10 @@ on:
 jobs:
 
   build_linux:
+
     runs-on: ubuntu-18.04
+
+    if: false
 
     env:
       BUILD_TYPE: relwithdebinfo
@@ -62,17 +65,17 @@ jobs:
         ci\github\install.cmd
         echo %cd%\tools\patch >> %GITHUB_PATH%
 
-    - name: Build
-      run: ci\github\build.cmd
+    #- name: Build
+    #  run: ci\github\build.cmd
 
-    - name: Test
-      run: ci\github\test.cmd
+    #- name: Test
+    #  run: ci\github\test.cmd
 
-    - name: Upload binaries
-      uses: actions/upload-artifact@v2
-      with:
-        name: beefweb_windows
-        if-no-files-found: error
-        path: |
-          build\${{ env.BUILD_TYPE_L }}\*.fb2k-component
-          build\${{ env.BUILD_TYPE_L }}\*.zip
+    #- name: Upload binaries
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #    name: beefweb_windows
+    #    if-no-files-found: error
+    #    path: |
+    #      build\${{ env.BUILD_TYPE_L }}\*.fb2k-component
+    #      build\${{ env.BUILD_TYPE_L }}\*.zip
