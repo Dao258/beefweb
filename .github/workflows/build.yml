@@ -62,12 +62,12 @@ jobs:
 
     - name: Install tools
       run: |
-        ci\github\install.cmd
+        cmd /c ci\github\install.cmd
         echo %cd%\tools\patch >> %GITHUB_PATH%
-        dir /b tools
-        dir /b tools\foobar2000
-        dir /b tools\foobar2000\v1.3
-        dir /b tools\foobar2000\v1.3\components
+        cmd /c dir /b tools
+        cmd /c dir /b tools\foobar2000
+        cmd /c dir /b tools\foobar2000\v1.3
+        cmd /c dir /b tools\foobar2000\v1.3\components
 
     #- name: Build
     #  run: ci\github\build.cmd
