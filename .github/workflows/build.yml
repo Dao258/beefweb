@@ -65,17 +65,17 @@ jobs:
         cmd /c ci\github\install.cmd
         cmd /c "echo %cd%\tools\patch >> %GITHUB_PATH%"
 
-    #- name: Build
-    #  run: cmd /c ci\github\build.cmd
+    - name: Build
+      run: cmd /c ci\github\build.cmd
 
-    #- name: Test
-    #  run: cmd /c ci\github\test.cmd
+    - name: Test
+      run: cmd /c ci\github\test.cmd
 
-    #- name: Upload binaries
-    #  uses: actions/upload-artifact@v2
-    #  with:
-    #    name: beefweb_windows
-    #    if-no-files-found: error
-    #    path: |
-    #      build\${{ env.BUILD_TYPE_L }}\*.fb2k-component
-    #      build\${{ env.BUILD_TYPE_L }}\*.zip
+    - name: Upload binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: beefweb_windows
+        if-no-files-found: error
+        path: |
+          build\${{ env.BUILD_TYPE_L }}\*.fb2k-component
+          build\${{ env.BUILD_TYPE_L }}\*.zip
