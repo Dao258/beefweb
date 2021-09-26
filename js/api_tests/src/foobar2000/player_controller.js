@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const fs = require('fs'); 
+const fs = require('fs');
 const childProcess = require('child_process');
 const { promisify } = require('util');
 const { waitForExit } = require('../utils');
@@ -9,6 +9,7 @@ const { waitForExit } = require('../utils');
 const copyFile = promisify(fs.copyFile);
 const writeFile = promisify(fs.writeFile);
 const execFile = promisify(childProcess.execFile);
+const fileExists = promisify(fs.exists);
 
 class PlayerController
 {
@@ -45,6 +46,14 @@ class PlayerController
 
     async installPlugin()
     {
+        const sourceDir = this.config.pluginBuildDir;
+        const sourceFile = path.join(this.config.pluginBuildDir, this.config.pluginFile);
+        const targetDir = this.paths.componentsDir;
+
+        console.log('DEBUG: sourceDir', await fileExists(sourceDir));
+        console.log('DEBUG: sourceFile', await fileExists(sourceFile));
+        console.log('DEBUG: targetDir', await fileExists(targetDir));
+
         await copyFile(
             path.join(this.config.pluginBuildDir, this.config.pluginFile),
             path.join(this.paths.componentsDir, this.config.pluginFile));
@@ -72,13 +81,13 @@ class PlayerController
 
         this.process.on('error', err => console.error('Error spawning player process: %s', err));
         this.process.on('exit', () => this.process = null);
-        this.process.unref(); 
+        this.process.unref();
     }
 
     async stopProcess()
     {
         const process = this.process;
-        
+
         if (!process)
             return;
 
