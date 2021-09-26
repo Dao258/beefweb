@@ -15,9 +15,9 @@ if "%1" == "v1.5" (
     goto :install
 )
 
-echo Usage: %~nx0 version
-echo Supported versions: v1.3 v1.4 v1.5
-cmd /c exit 1
+@echo Usage: %~nx0 version
+@echo Supported versions: v1.3 v1.4 v1.5
+@cmd /c exit 1
 goto :end
 
 :install
@@ -37,18 +37,14 @@ mkdir %target_dir%
 cd %target_dir%
 @if errorlevel 1 goto :end
 
-echo DEBUG: curl
-curl --fail --show-error --location -o %pkg_file% ^
+curl --silent --fail --show-error --location -o %pkg_file% ^
     "https://hyperblast.org/files/foobar2000/%pkg_file%"
-echo DEBUG: curl: %errorlevel%
 @if errorlevel 1 goto :end
 
 echo.>portable_mode_enabled
 @if errorlevel 1 goto :end
 
-echo DEBUG: run installer
 %pkg_file% /S /D=%cd%
-echo DEBUG: run installer: %errorlevel%
 @if errorlevel 1 goto :end
 
 del %pkg_file%

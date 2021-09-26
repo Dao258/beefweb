@@ -23,6 +23,8 @@ curl --silent --fail --show-error --location -o %pkg_file% ^
 7z x %pkg_file%
 @if errorlevel 1 goto :end
 
+dir /b .
+
 del %pkg_file%
 @if errorlevel 1 goto :end
 
