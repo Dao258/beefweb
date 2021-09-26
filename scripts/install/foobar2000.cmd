@@ -53,6 +53,4 @@ del %pkg_file%
 xcopy /E /F /Y "%~dp0foobar2000\%1" .
 @if errorlevel 1 goto :end
 
-dir /b .
-
 :end

@@ -46,14 +46,6 @@ class PlayerController
 
     async installPlugin()
     {
-        const sourceDir = this.config.pluginBuildDir;
-        const sourceFile = path.join(this.config.pluginBuildDir, this.config.pluginFile);
-        const targetDir = this.paths.componentsDir;
-
-        console.log('DEBUG: sourceDir', await fileExists(sourceDir));
-        console.log('DEBUG: sourceFile', await fileExists(sourceFile));
-        console.log('DEBUG: targetDir', await fileExists(targetDir));
-
         await copyFile(
             path.join(this.config.pluginBuildDir, this.config.pluginFile),
             path.join(this.paths.componentsDir, this.config.pluginFile));
