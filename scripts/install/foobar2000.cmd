@@ -28,33 +28,33 @@ cd "%~dp0..\.."
 
 if exist %target_dir%\. (
     rmdir /s /q %target_dir%
-    if errorlevel 1 goto :end
+    @if errorlevel 1 goto :end
 )
 
 mkdir %target_dir%
-if errorlevel 1 goto :end
+@if errorlevel 1 goto :end
 
 cd %target_dir%
-if errorlevel 1 goto :end
+@if errorlevel 1 goto :end
 
 echo DEBUG: curl
 curl --fail --show-error --location -o %pkg_file% ^
     "https://hyperblast.org/files/foobar2000/%pkg_file%"
 echo DEBUG: curl: %errorlevel%
-if errorlevel 1 goto :end
+@if errorlevel 1 goto :end
 
 echo.>portable_mode_enabled
-if errorlevel 1 goto :end
+@if errorlevel 1 goto :end
 
 echo DEBUG: run installer
 %pkg_file% /S /D=%cd%
 echo DEBUG: run installer: %errorlevel%
-if errorlevel 1 goto :end
+@if errorlevel 1 goto :end
 
 del %pkg_file%
-if errorlevel 1 goto :end
+@if errorlevel 1 goto :end
 
 xcopy /E /F /Y "%~dp0foobar2000\%1" .
-if errorlevel 1 goto :end
+@if errorlevel 1 goto :end
 
 :end
