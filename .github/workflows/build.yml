@@ -18,11 +18,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Install tools
-      run: ci/github/install.sh
-
     - name: Prepare docker image
       run: ci/github/prepare.sh
+
+    - name: Install tools
+      run: ci/github/install.sh
 
     - name: Build
       run: ci/github/build.sh

@@ -9,6 +9,4 @@ RUN apt update && \
 
 RUN cd /usr/bin && ln -s yarnpkg yarn
 
-WORKDIR /work
-
 CMD ["/bin/bash"]
