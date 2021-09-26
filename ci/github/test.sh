@@ -27,8 +27,31 @@ function run_api_tests
     )
 }
 
+function main_outer
+{
+    docker run --rm -it \
+        -e IN_DOCKER=1 -e BUILD_TYPE \
+        -v $(pwd):/work:z \
+        beefweb-dev \
+        ci/github/test.sh
+}
+
+function main_inner
+{
+    run_server_tests
+    run_api_tests v0.7
+    run_api_tests v1.8
+}
 
 cd "$(dirname $0)/../.."
-run_server_tests
-run_api_tests v0.7
-run_api_tests v1.8
+
+if [ -z "$BUILD_TYPE" ]; then
+    echo BUILD_TYPE is required
+    exit 1
+fi
+
+if [ "$IN_DOCKER" == "1" ]; then
+    main_inner
+else
+    main_outer
+fi

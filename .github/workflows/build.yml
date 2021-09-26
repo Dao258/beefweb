@@ -9,9 +9,6 @@ on:
 jobs:
 
   build_linux:
-
-    if: false
-
     runs-on: ubuntu-18.04
 
     env:
@@ -21,11 +18,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Print versions
-      run: scripts/print-versions.sh
-
     - name: Install tools
       run: ci/github/install.sh
+
+    - name: Prepare docker image
+      run: ci/github/prepare.sh
 
     - name: Build
       run: ci/github/build.sh
