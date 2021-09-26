@@ -11,5 +11,5 @@ else
     docker run --rm \
         -e IN_DOCKER=1 -e BUILD_TYPE \
         -v $(pwd):/work:z \
-        beefweb-dev "$0"
+        beefweb-dev "/work/$0"
 fi
