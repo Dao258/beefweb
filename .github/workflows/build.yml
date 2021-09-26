@@ -24,8 +24,11 @@ jobs:
     - name: Install tools
       run: ci/github/install.sh
 
-    - name: Build
-      run: ci/github/build.sh
+    - name: Build server
+      run: ci/github/build-server.sh
+
+    - name: Build rest
+      run: ci/github/build-rest.sh
 
     - name: Test
       run: ci/github/test.sh

@@ -5,11 +5,15 @@ if [ -z "$BUILD_TYPE" ]; then
     exit 1
 fi
 
+if [ -z "$DOCKER_IMAGE" ]; then
+    DOCKER_IMAGE=beefweb-main-dev
+fi
+
 if [ "$IN_DOCKER" == "1" ]; then
     main
 else
     docker run --rm \
         -e IN_DOCKER=1 -e BUILD_TYPE \
         -v $(pwd):/work:z \
-        beefweb-dev "/work/$0"
+        "$DOCKER_IMAGE" "/work/$0"
 fi
