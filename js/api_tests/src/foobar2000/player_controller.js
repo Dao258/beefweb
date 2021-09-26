@@ -9,7 +9,6 @@ const { waitForExit } = require('../utils');
 const copyFile = promisify(fs.copyFile);
 const writeFile = promisify(fs.writeFile);
 const execFile = promisify(childProcess.execFile);
-const fileExists = promisify(fs.exists);
 
 class PlayerController
 {
