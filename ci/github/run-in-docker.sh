@@ -15,7 +15,7 @@ else
     cd "$(dirname $0)/../.."
     SCRIPT_PATH_REL="$(realpath --relative-to="$(pwd)" "$SCRIPT_PATH_ABS")"
 
-    echo docker run --rm \
+    docker run --rm \
         -e IN_DOCKER=1 -e BUILD_TYPE \
         -v "$(pwd):/work:z" \
         "$DOCKER_IMAGE" "/work/$SCRIPT_PATH_REL"
