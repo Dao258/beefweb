@@ -4,7 +4,7 @@ if [ -z "$BUILD_TYPE" ]; then
 fi
 
 if [ -z "$DOCKER_IMAGE" ]; then
-    DOCKER_IMAGE=beefweb-main-dev
+    DOCKER_IMAGE=beefweb-dev-main
 fi
 
 if [ "$IN_DOCKER" == "1" ]; then
